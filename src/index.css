@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Outfit", "Poppins", ui-sans-serif, system-ui, sans-serif;
+  
+  --color-brand-bg: #FFF9EF;
+  --color-brand-text: #171717;
+  --color-brand-muted: #6A6A6A;
+  --color-brand-accent: #F2B632;
+  --color-brand-accent-hover: #E3A81A;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    background-color: #FFF9EF;
+    color: #171717;
+  }
+  
+  body {
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+  }
+}
+
+/* Custom background paint splash */
+.paint-splash {
+  background: radial-gradient(circle, rgba(242,182,50,0.18) 0%, rgba(242,182,50,0.06) 45%, rgba(255,249,239,0) 70%);
+}
+
+/* Custom scrollbar to match luxury aesthetic */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #FFF9EF;
+}
+::-webkit-scrollbar-thumb {
+  background: #F2B632;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #E3A81A;
+}
