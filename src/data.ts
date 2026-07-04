@@ -13,8 +13,8 @@ export const personalInfo = {
     linkedin: 'https://www.linkedin.com/in/gampa-rithika-a291152a7/',
     leetcode: 'https://leetcode.com/u/Gampa_Rithika/'
   },
-  heroImage: '/hero-portrait.jpg',
-  aboutImage: '/hero-portrait.jpg'
+  heroImage: '/photo.png',
+  aboutImage: '/photo.png'
 };
 
 export const services: Service[] = [
