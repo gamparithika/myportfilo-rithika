@@ -5,6 +5,7 @@ import { personalInfo } from '../data';
 
 export default function Hero() {
   const [imageLoaded, setImageLoaded] = useState(false);
+  const [imgSrc, setImgSrc] = useState(personalInfo.heroImage);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -189,12 +190,16 @@ export default function Hero() {
 
               <img
                 id="hero-portrait-img"
-                src={personalInfo.heroImage}
+                src={imgSrc}
                 alt={`${personalInfo.name} - Portrait`}
                 referrerPolicy="no-referrer"
                 loading="eager"
                 fetchPriority="high"
                 onLoad={() => setImageLoaded(true)}
+                onError={() => {
+                  console.log("Hero image failed to load from Google Drive. Falling back to fast public portrait.");
+                  setImgSrc("https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=600&h=800");
+                }}
                 className={`w-full h-full object-cover object-center scale-[1.35] origin-[center_15%] transition-all duration-700 ease-out ${
                   imageLoaded ? 'opacity-100' : 'opacity-0'
                 }`}

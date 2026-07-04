@@ -1,8 +1,12 @@
+import { useState } from 'react';
 import { motion } from 'motion/react';
 import { GraduationCap, Award, BookOpen } from 'lucide-react';
 import { personalInfo } from '../data';
 
 export default function About() {
+  const [imageLoaded, setImageLoaded] = useState(false);
+  const [imgSrc, setImgSrc] = useState(personalInfo.aboutImage);
+
   const educationItems = [
     {
       institution: 'SR University',
@@ -45,12 +49,28 @@ export default function About() {
             <div className="absolute -bottom-5 -left-5 w-full h-full border-2 border-[#F2B632] rounded-xl pointer-events-none z-0 rotate-[-2deg]"></div>
 
             <div className="relative z-10 rounded-xl overflow-hidden shadow-xl border border-[#171717]/5 aspect-[3/4] bg-gradient-to-b from-transparent to-[#F2B632]/10">
+              {/* Premium Shimmer Skeleton Loader */}
+              {!imageLoaded && (
+                <div className="absolute inset-0 overflow-hidden flex items-center justify-center">
+                  <div className="absolute inset-0 animate-shimmer" />
+                  <div className="w-16 h-16 rounded-full border-4 border-t-[#F2B632] border-[#F2B632]/20 animate-spin z-10" />
+                </div>
+              )}
+
               <img
                 id="about-portrait-img"
-                src={personalInfo.aboutImage}
+                src={imgSrc}
                 alt={`About ${personalInfo.name}`}
                 referrerPolicy="no-referrer"
-                className="w-full h-full object-cover object-center scale-[1.35] origin-[center_15%] transition-all duration-700 ease-out"
+                loading="lazy"
+                onLoad={() => setImageLoaded(true)}
+                onError={() => {
+                  console.log("About image failed to load from Google Drive. Falling back to fast public portrait.");
+                  setImgSrc("https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=600&h=800");
+                }}
+                className={`w-full h-full object-cover object-center scale-[1.35] origin-[center_15%] transition-all duration-700 ease-out ${
+                  imageLoaded ? 'opacity-100' : 'opacity-0'
+                }`}
               />
             </div>
             
