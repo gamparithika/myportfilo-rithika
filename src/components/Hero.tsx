@@ -1,8 +1,11 @@
+import { useState } from 'react';
 import { Github, Linkedin, Mail, Phone, MapPin, Code } from 'lucide-react';
 import { motion } from 'motion/react';
 import { personalInfo } from '../data';
 
 export default function Hero() {
+  const [imageLoaded, setImageLoaded] = useState(false);
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -176,12 +179,25 @@ export default function Hero() {
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
               className="relative z-10 rounded-2xl overflow-hidden shadow-2xl border-4 border-white bg-gradient-to-b from-transparent to-[#F2B632]/10 w-full max-w-[340px] lg:max-w-none aspect-[3/4] transition-shadow duration-300 hover:shadow-[0_20px_50px_rgba(242,182,50,0.2)] cursor-pointer"
             >
+              {/* Premium Shimmer Skeleton Loader */}
+              {!imageLoaded && (
+                <div className="absolute inset-0 overflow-hidden flex items-center justify-center">
+                  <div className="absolute inset-0 animate-shimmer" />
+                  <div className="w-16 h-16 rounded-full border-4 border-t-[#F2B632] border-[#F2B632]/20 animate-spin z-10" />
+                </div>
+              )}
+
               <img
                 id="hero-portrait-img"
                 src={personalInfo.heroImage}
                 alt={`${personalInfo.name} - Portrait`}
                 referrerPolicy="no-referrer"
-                className="w-full h-full object-cover object-center scale-[1.35] origin-[center_15%] transition-all duration-700 ease-out"
+                loading="eager"
+                fetchPriority="high"
+                onLoad={() => setImageLoaded(true)}
+                className={`w-full h-full object-cover object-center scale-[1.35] origin-[center_15%] transition-all duration-700 ease-out ${
+                  imageLoaded ? 'opacity-100' : 'opacity-0'
+                }`}
               />
             </motion.div>
           </div>
