@@ -15,8 +15,8 @@ export default function Resume() {
       icon: Code
     },
     {
-      title: 'Smart India Hackathon Finalist',
-      description: 'Selected for national-level innovation pitch, collaborating under extreme time constraints to deliver automated software prototypes.',
+      title: 'Smart India Internal Hackathon',
+      description: 'Participated in the university-level internal Hackathon, collaborating under tight time constraints to deliver automated software prototypes.',
       icon: Trophy
     },
     {

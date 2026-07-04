@@ -101,10 +101,10 @@ export const timelineItems: TimelineItem[] = [
   },
   {
     id: 't3',
-    role: 'National Hackathon Finalist',
+    role: 'Smart India Internal Hackathon Participant',
     company: 'Smart India Hackathon (SIH)',
     period: '2024',
-    description: 'Represented university on a national stage. Pitched innovative software automation products, collaborated under tight time bounds, and built responsive, user-accessible application workflows.',
+    description: 'Participated in the university-level Internal Smart India Hackathon. Collaborated with team members under tight time bounds to develop functional, innovative software prototypes.',
     type: 'experience'
   },
   {
