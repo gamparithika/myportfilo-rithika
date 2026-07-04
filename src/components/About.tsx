@@ -65,8 +65,7 @@ export default function About() {
                 loading="lazy"
                 onLoad={() => setImageLoaded(true)}
                 onError={() => {
-                  console.log("About image failed to load from Google Drive. Falling back to fast public portrait.");
-                  setImgSrc("https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=600&h=800");
+                  console.error("About image failed to load.");
                 }}
                 className={`w-full h-full object-cover object-center scale-[1.35] origin-[center_15%] transition-all duration-700 ease-out ${
                   imageLoaded ? 'opacity-100' : 'opacity-0'
